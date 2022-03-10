@@ -2,26 +2,30 @@ import './modal.css'
 import firebase from '../../services/firebaseConnection';
 import { FiX } from 'react-icons/fi'
 import { toast } from 'react-toastify';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Modal({ conteudo, close }){
 
     // const idPassado = conteudo.id
     // console.log(idPassado)
 
-    async function handleDelete(id){
-        await firebase.firestore().collection('chamados').doc(id)
-        .delete()
-        .then(()=>{
-            window.location.reload();
-            toast.success('Deu certo');
-        })
-        .catch((err)=>{
-            console.log('erro ', err)
-            toast.error('Deu erro gatinho')
-        })
-        
-    }
 
+    async function handleDelete(id){
+    await firebase.firestore().collection('chamados').doc(id)
+    .delete()
+    .then(()=>{
+        window.location.reload();
+        toast.success('Chamado excluido com sucesso!');
+    })
+    .catch((err)=>{
+        console.log('erro ', err);
+        toast.error('Erro ao excluir chamado');
+    })
+    
+    }
+    
 
     return(
         <div className='content modal'>

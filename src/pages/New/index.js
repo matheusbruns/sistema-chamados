@@ -102,9 +102,9 @@ export default function New(){
             })
             .then(()=>{
                 toast.success('Chamado Editado com sucesso!');
-                setCustomerSelected(0)
+                setCustomerSelected(0);
                 setComplemento('');
-                navigate('/dashboard')
+                navigate('/dashboard');
             })
             .catch((err)=>{
                 toast.error("Ops, erro ao registrar, verifique os campos.");
